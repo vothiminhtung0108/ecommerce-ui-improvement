@@ -1,0 +1,517 @@
+/* ==========================================================================
+   1. KHAI BÁO BIẾN CSS & CẤU HÌNH CƠ BẢN
+   ========================================================================== */
+:root {
+  --primary-color: #d70018;       /* Màu đỏ thương mại điện tử nổi bật */
+  --primary-hover: #b50014;
+  --secondary-color: #2b80dd;     /* Màu xanh dương cho trả góp */
+  --text-main: #222222;
+  --text-muted: #666666;
+  --bg-light: #f8f9fa;
+  --border-color: #e0e0e0;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-base);
+  color: var(--text-main);
+  background-color: #ffffff;
+  line-height: 1.5;
+  padding-bottom: 70px; /* Dành khoảng trống cho Sticky Bar trên Mobile */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+fieldset {
+  border: none;
+}
+
+/* ==========================================================================
+   2. BREADCRUMB NAVIGATION
+   ========================================================================== */
+.breadcrumb-nav {
+  background-color: var(--bg-light);
+  padding: 10px 0;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 8px;
+}
+
+.breadcrumb li+li::before {
+  content: "/";
+  margin-right: 8px;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-color);
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   3. PRODUCT HERO SECTION (DESKTOP: 2 CỘT)
+   ========================================================================== */
+.product-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+/* Cột gallery */
+.main-image-wrapper {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.badge-discount {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.thumbnail-list {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.thumb-btn {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: border-color 0.2s;
+}
+
+.thumb-btn.active, .thumb-btn:hover {
+  border-color: var(--primary-color);
+}
+
+/* Cột mua hàng (Buy Zone) */
+.product-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.875rem;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.stars {
+  color: #ff9800;
+}
+
+.product-price-box {
+  background-color: #fff5f5;
+  border: 1px dashed var(--primary-color);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.price-group {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.current-price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.original-price {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.smember-price {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.badge-smember {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Form chọn tùy chọn */
+.option-group {
+  margin-bottom: 16px;
+}
+
+.option-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.option-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.radio-card {
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.875rem;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.radio-card input {
+  display: none;
+}
+
+.radio-card.active, .radio-card:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: #fff5f5;
+  font-weight: 600;
+}
+
+/* Khối Khuyến mãi */
+.promo-box {
+  border: 1px solid #bce2ff;
+  background-color: #f0f8ff;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+
+.promo-header {
+  font-size: 0.95rem;
+  color: #0056b3;
+  margin-bottom: 8px;
+}
+
+.promo-list {
+  padding-left: 18px;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+/* Nút thao tác CTA */
+.cta-action-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 12px;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  padding: 10px;
+}
+
+.btn-outline {
+  background-color: #fff;
+  border: 1.5px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: 700;
+  padding: 10px;
+}
+
+.btn-outline:hover {
+  background-color: #fff5f5;
+}
+
+.secondary-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   4. KHU VỰC SẢN PHẨM MUA KÈM (GRID 4 SẢN PHẨM)
+   ========================================================================== */
+.related-products-section {
+  padding: 20px 14px;
+  border: 1px solid #f2d5d8;
+  border-top: 4px solid var(--primary-color);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, #fff8f8 0%, #ffffff 220px);
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.highlight-discount {
+  display: inline-block;
+  margin: 4px 0 0 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.75em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-image-wrapper {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.card-tag {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  height: 2.8em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-title a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.card-title a:hover {
+  color: var(--primary-color);
+}
+
+.card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.price-current {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.price-old {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.btn-card-action {
+  width: 100%;
+  padding: 8px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.btn-card-action:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   5. STICKY BOTTOM BAR (CHO MOBILE)
+   ========================================================================== */
+.sticky-bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.12);
+  padding: 10px 16px;
+  z-index: 999;
+}
+
+.sticky-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sticky-title {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.sticky-price {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.sticky-btn-buy {
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet (>= 576px) */
+@media (min-width: 576px) {
+  .related-products-section {
+    padding: 24px 20px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop & Desktop (>= 992px) */
+@media (min-width: 992px) {
+  body {
+    padding-bottom: 0; /* Ẩn khoảng trống bottom bar trên màn hình lớn */
+  }
+
+  .sticky-bottom-bar {
+    display: none; /* Không hiển thị Sticky bar trên Desktop */
+  }
+
+  .product-hero {
+    grid-template-columns: 5fr 7fr; /* Cấu trúc 2 cột chuẩn tỉ lệ 5:7 */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 sản phẩm trên 1 hàng */
+  }
+
+  .related-products-section {
+    padding: 28px 24px;
+  }
+}
